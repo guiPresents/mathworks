@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+h1 {
+    width: 50%;
+    font-size: 2rem;
+    padding:1rem;
+    margin: 5rem auto 2rem auto;
+    background: rgb(118, 158, 78);
+    border-radius: 1rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+h1, h2{
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.1rem;
+    padding-left: 1rem;
+}
+
+.container {
+    width: 90%;
+    display: flex;
+    margin: auto;
+}
+
+.social {
+    display:flex;
+    padding: 1rem;
+}
+

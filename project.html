@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="shortcut icon" href="#">
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+</head>
+
+<body>
+
+    <header></header>
+
+    <main>
+
+        <section>
+            <div class="container" style="align-items: center;">
+                <h1>Overview:</h1>
+                <p style="font-size: 1.3rem; padding-left: 0.5rem;">What is chromatin?</p>
+            </div>
+
+            <div class="container">
+                <div style="width: 50%;">
+                    <img width=55% src="./img/project/cells.png">
+                    <p class="citation">Cells at the microscope</p>
+                </div>
+
+                <div style="width: 50%;">
+                    <img width=70% src="https://ars.els-cdn.com/content/image/1-s2.0-S0955067420300399-gr1_lrg.jpg">
+                    <p class="citation">Maeshida <i>et al</i>; Current Opinion in Cell Biology 2020</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1>So it is dynamic...</h1>
+            <img src=" ./img/project/mito_image.jpg" width=90% style="padding-top: 1rem;"">
+            <p style="text-align: center;">Chromatin changes wildly during the cell cycle <i style="font-size: 0.9rem;">(Gibcus, Samejima, Goloborodko et al; Science 2018)</i></p>
+
+            <img src="./img/project/enhancer_promoter.png" width=80% style="padding-top: 3rem">
+            <p style="text-align: center;">Regulation dynamics within cycle phases <i style="font-size: 0.9rem;">(Schoenfelder et al; Nature Reviews 2019)</i></p>
+        </section>
+
+
+        <section>
+            <h1>Main questions</h1>
+            <ul>
+                <li style="font-size: 1.3rem;">How stable is the average chromatin structure?</li>
+                <li style="font-size: 1.3rem;">Are diffusion dynamics and chromatin structure somehow related?</li>
+                <li style="font-size: 1.3rem;">Dynamics &lrarr; function ?</li>
+            </ul>
+
+            <h2 style="padding-top: 5rem;">Some of the answer</h2>
+            <img width=50% src="./img/experience/phd/paper.png">
+        </section>
+
+
+        <section>
+            <h1>Who were/are we?</h1>
+           <img width=62% src="./img/project/team.png" alt="">
+        </section>
+
+
+        <section>
+            <div class="container" style="align-items: center;">
+                <h1>First problem:</h1>
+                <p style="font-size: 1.5rem; margin-left: 0.5rem;">Can you see the spots?</p>
+            </div>
+            <img width=55% src="./img/project/spots.png" alt="">
+
+            <div class="container" style="justify-content: center; margin-top: 2rem;">
+            <ul>
+                <li>Low signal to noise ratio</li>
+            </ul>
+            <ul>
+                <li>Spots are very small</li>
+            </ul>
+        </div>
+        </section>
+
+        <section>
+            <div class="container" style="align-items: center;">
+                <h1>Solution:</h1>
+                <p style="font-size: 1.5rem; margin-left: 0.5rem;">Enhancing localization :: False positive removal</p>
+            </div>
+
+            <div class="container">
+                <div style="width: 50%;">
+                    <p>Assuming Poisson distribution:</p>
+                    <p style="padding-top:1rem;">
+                        $$ \large
+                        S_{x,y} = I_o\ \exp \left\{-\frac{1}{2}
+                        \begin{pmatrix}
+                        x - \mu_x \\
+                        y - \mu_y\\
+                        \end{pmatrix}^T
+                        \begin{bmatrix}
+                        L_x^2 & \theta L_x L_y \\
+                        \theta L_x L_y & L_y^2 \\
+                        \end{bmatrix}^{-1}
+                        \begin{pmatrix}
+                        x - \mu_x \\
+                        y - \mu_y\\
+                        \end{pmatrix}
+                        \right\} + B_G
+                        $$
+                    </p>
+
+                    <ul>
+                        <li>\(S_{x,y}\): Pixel value</li>
+                        <li>\(I_o\): Spot signal </li>
+                        <li>\(B_G\): Background signal </li>
+                        <li>\(\mu_i\): Center of mass</li>
+                        <li>\(L_i\): Spot size </li>
+                    </ul>
+
+                    <h2 style="margin-top: 1.5rem;">Test results</h2>
+                    <img width=95% src="./img/project/localization.png" alt="">
+
+            </div>
+            <div style="width: 50%;">
+                <img width=80% src="./img/project/traj_code2.png" alt="">
+            </div>
+         </div>
+        </section>
+
+
+        <section>
+            <div class="container">
+                <h1>Second problem:</h1>
+                <p style="font-size: 1.5rem; margin-left: 0.5rem;">Camera alignment + chromatic aberration</p>
+            </div>
+
+            <div class="container">
+                <div style="width: 50%; text-align: center;">
+                    <img width=50% src="./img/project/align1.png" alt="">
+                    <p style="margin-top: 1rem;">Alignment beads</p>
+                </div>
+                <div style="width: 50%;text-align: center;">
+                    <img width=50% src="./img/project/align_before.png" alt="">
+                    <p style="margin-top: 1rem;">Raw image</p>
+                </div>
+            </div>
+
+            <h2 style="text-align: center; margin: 2rem auto; border: solid 5px orange; padding: auto; width: 40%;">
+                How to save almost 3 years of uncalibrated data?
+            </h2>
+        </section>
+
+        <section>
+            <div class="container">
+                <h1>Solution:</h1>
+                <p style="font-size: 1.5rem; margin-left: 0.5rem;">Multi-channel calibration algorithm</p>
+            </div>
+
+            <div class="container">
+                <div style="width: 50%;">
+                    <p style="padding-top: -2rem;">$$ \large
+                        \Omega =
+                        \begin{pmatrix}
+                        s_x & 0 & (1-s_x) W/2 \\
+                        0 & s_y & (1-s_y) H/2 \\
+                        0 & 0 & 1 \\
+                        \end{pmatrix}
+                        \begin{pmatrix}
+                        1 & 0 & d_x + c_x \\
+                        0 & 1 & d_y + c_y\\
+                        0 & 0 & 1 \\
+                        \end{pmatrix}
+                        \begin{pmatrix}
+                        \cos(\theta) & \sin(\theta) & 0 \\
+                        -\sin(\theta) & \cos(\theta) & 0 \\
+                        0 & 0 & 1 \\
+                        \end{pmatrix}
+                        \begin{pmatrix}
+                        1 & 0 & -c_x \\
+                        0 & 1 & -c_y \\
+                        0 & 0 & 1 \\
+                        \end{pmatrix}
+                        $$</p>
+        
+                        <table style="border-spacing: 4rem 0.5rem; margin-top: 2rem;">
+                        <tr>
+                            <td>\(s_i\): Scaling :: chromatic aberration</td>
+                            <td>\(d_i\): Camera translation </td>
+                        </tr>
+                        <tr>
+                            <td>\(c_i\): Camera rotation center </td>
+                            <td>\(\theta \): Rotation angle </td>
+                        </tr><tr>
+                            <td>\(W\): Image width </td>
+                            <td>\(H\): Image height </td>
+                        </tr>
+                    </table>
+
+                    
+                    <h2 style="margin-top: 2rem;">Results:</h2>
+                    <div class="container" style="justify-content: center;">
+                        <img width=30% src="./img/project/align2.png">
+                        <img width=30% src="./img/project/align_after.png" alt="">
+                    </div>
+                    
+                </div>
+
+                <div style="width:50%; text-align: center;">
+                    <p style="margin-bottom: 0.5rem;">Log-likelihood weight function for camera correction</p>
+                    <img width=66% src="./img/project/align_energy.png" alt="">
+                </div>
+
+            </div>
+        </section>
+
+
+        <section>
+            <div class="container">
+                <h1>Third problem:</h1>
+                <p style="font-size: 1.5rem; margin-left: 0.5rem;">Intrinsic and extrinsic movement</p>
+            </div>
+            
+            <div class="container" style="justify-content: space-evenly;">
+                <div style="width:50%;">
+                    <img width=90% src="./img/project/cells_move.svg" alt="">
+                </div>
+                
+                <div>
+                    <img width=80% src="./img/project/trajectories.svg">
+                </div>
+            </div>
+
+            <div class="container" style="justify-content: space-evenly;">
+                <div style="margin-left: -5rem;">
+                    <h2 style="margin-top: 2rem;">Sources of extrinsic movement:</h2>
+                    <ul style="padding-left: 2rem;">
+                        <li>Cells are alive!</li>
+                        <li>Cells don't like heat (lasers)</li>
+                        <li>Thermal drift (microscope)</li>
+                        <li>Forces from neighboring cells</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 style="margin-top: -3rem;">Traditional solutions:</h2>
+                        <ul style="padding-left: 2rem;">
+                            <li><b>Experimental:</b> Too late for that</li>
+                            <li><b>Optical flow:</b> Doesn't really work here</li>
+                        </ul>
+                <div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h1>Solution:</h1>
+                <p style="font-size: 1.5rem; margin-left: 0.5rem;"> Analysis of cross-correlation with GP-FBM </p>
+            </div>
+
+    
+            <div class="container">
+                <div style="width:40%;">
+                   <img width="50%" src="./img/project/model_coupled_accuracy.png" alt="">
+                </div>
+
+                <div style="width: 60%;">
+                    <p>For a system with two particles:</p>
+                    <p>
+                        $$ \large \rho(\vec{r}_i | D_i, \alpha_i) \propto \exp \left\{ -\frac{1}{2}
+                        \begin{pmatrix}
+                        \vec{r}_1 \\ \vec{r}_2 \\
+                        \end{pmatrix}^T
+                        \begin{pmatrix}
+                        \Sigma_1+\Sigma_R & \Sigma_R\\
+                        \Sigma_R & \Sigma_2+\Sigma_R\\
+                        \end{pmatrix}^{-1}
+                        \begin{pmatrix}
+                        \vec{r}_1 \\ \vec{r}_2 \\
+                        \end{pmatrix}
+                        \right\} $$
+                    </p>
+
+                    <p>where \(\Sigma_{D, \alpha} (t,s) = D_\alpha\ (t^\alpha + s^\alpha - |t-s|^\alpha) \) and</p>
+
+                    <ul style="padding: 1rem;">
+                        <li>\( \vec{r}_i\): tracked positions</li>
+                        <li>\( \Sigma_i\): FBM kernel for each particle</li>
+                        <li>\( \Sigma_R \): Substrate related co-variance</li>
+                    </ul>
+                    
+                    
+                </div>
+            </div>
+
+
+            <div class="container" style="align-items: center; margin-top: 1rem;">
+                <h2>Test:</h2>
+                <p style="margin-left: 0.5rem;">Estimated results on 2000 simulated systems with background movement using random parameters</p>
+            </div>
+
+            <img width="60%" src="./img/project/test_coupled_accuracy.png" alt="">
+        </section>
+
+        <section>
+            <h2 style="margin-bottom: 1rem;">Other useful features</h2>
+
+            <div class="container">
+                <div style="width: 50%;">
+                    <p style="margin-left: 7.5rem;">Interpolating particle position</p>
+                    <img width=58% src="./img/project/avg_traj1.png" style="margin: 1rem auto;">
+                    <img width=58% src="./img/project/avg_traj2.png">                    
+                </div>
+
+                <div>
+                    <p style="margin-left: 5rem;">Estimating substrate movement</p>
+                    <img width=70% src="./img/project/substrate.png" style="margin: 1rem auto;">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1>GP-Tool: An user-friendly graphical interface to apply GP-FBM</h1>
+
+            <img width=65% src="./img/project/gp_tool.png">
+
+            <div style="display:flex; justify-content: center; align-items: center; border: 0.2rem solid green; width: 20%; margin: 1rem auto 0 auto;">
+                <img width=10% src="./img/logo/github.png" style="margin: 0.5rem 1rem;">
+
+                <p>github.com/guilmont/GP-Tool</p>
+            </div>
+        </section>
+
+        <section>
+            <h1>Current concerns</h1>
+            <ul>
+                <li><b>Alignment:</b>
+                     <ul>
+                        <li> It doesn't handle well images with low contrast</li> 
+                        <li> It is sensitive to super bright artifacts</li>
+                    </ul></il>
+                <li><b>GP-FBM:</b> 
+                    <ul>
+                        <li>Assuming cross-correlation to be extrinsic might hide meaningful biology</li>
+                    </ul>
+                    </li>
+            </ul>
+
+
+            <h1 style="margin-top: 5rem;">Things I learned</h1>
+            <ul>
+                <li>Don't try to outsmart yourself</li>
+                <li>Don't optimize code until necessary, be strategic</li>
+                <li>Handling experimental data is a form of art (exception errors)</li>
+                <li>A good interactive and fast visualization tool is key for quick development</li>
+                <li>Stupid questions also have value</li>
+                <li>"I don't know" is a valid answer</li>
+            </ul>
+        </section>
+
+
+    </main>
+
+    <footer></footer>
+
+    <script src="./main.js"></script>
+
+</body>
